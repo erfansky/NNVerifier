@@ -54,9 +54,7 @@ project/
 │   ├── incorrect.yml
 │   └── ...
 │
-├── model/
-│   └── representation.py
-│
+├── representation.py
 ├── yaml_parser.py
 ├── z3_encoders.py
 ├── main.py
