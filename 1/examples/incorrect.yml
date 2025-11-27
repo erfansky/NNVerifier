@@ -1,0 +1,17 @@
+model:
+  format: "dense"
+  layers:
+    - type: "Dense"
+      units: 1
+      activation: "relu"
+      weights:
+        - [2.0, -0.5]
+      bias: [0.5]
+
+property:
+  inputs:
+    x1: [0, 1]
+    x2: [0, 1]
+  outputs:
+    y: ["<", 1.5]
+
