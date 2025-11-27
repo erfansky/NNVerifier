@@ -1,16 +1,16 @@
-import z3
 from yaml_parser import YamlParser,ModelFormatError
-import os
+from z3_encoder import Z3Encoder
 
 def main():
-    print(os.getcwd())
-    parser = YamlParser("examples/three_hidden.yml")
+    parser = YamlParser("examples/incorrect.yml")
     try:
         model, prop = parser.parse()
-        print("Parsed model:")
-        print(model)
-        print("Parsed property:")
-        print(prop)
+        encoder = Z3Encoder(model, prop)
+        solver = encoder.encode()
+        result = solver.check()
+        print("Solver result:", result)
+        if result.r == 1:  # sat
+            print("Counterexample:", solver.model())
     except ModelFormatError as e:
         print("Error parsing YAML:", e)
 

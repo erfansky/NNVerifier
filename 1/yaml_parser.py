@@ -119,19 +119,3 @@ class YamlParser:
         prop_spec.validate_inputs()
 
         return network_model, prop_spec
-
-
-# -------------------------
-# Quick test / usage
-# -------------------------
-if __name__ == "__main__":
-    # Example usage
-    parser = YamlParser("example.yml")  # replace with your YAML file path
-    try:
-        model, prop = parser.parse()
-        print("Parsed model:")
-        print(model)
-        print("Parsed property:")
-        print(prop)
-    except ModelFormatError as e:
-        print("Error parsing YAML:", e)
