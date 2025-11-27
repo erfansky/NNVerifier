@@ -1,14 +1,18 @@
 import z3
-from model_representation import example_model
-
+from yaml_parser import YamlParser,ModelFormatError
+import os
 
 def main():
-    model, prop = example_model()
-    print(model)
-    print("Inputs:", model.total_inputs())
-    print("Outputs:", model.total_outputs())
-    print("Property inputs:", prop.input_bounds)
-    print("Property outputs:", prop.output_constraints)
+    print(os.getcwd())
+    parser = YamlParser("examples/three_hidden.yml")
+    try:
+        model, prop = parser.parse()
+        print("Parsed model:")
+        print(model)
+        print("Parsed property:")
+        print(prop)
+    except ModelFormatError as e:
+        print("Error parsing YAML:", e)
 
 
 
